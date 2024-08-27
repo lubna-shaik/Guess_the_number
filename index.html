@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Guess the Number</title>
+    <style>
+        body { 
+            font-family: 'Arial', sans-serif; 
+            text-align: center; 
+            margin: 0; 
+            padding: 0; 
+            height: 100vh; 
+            background: linear-gradient(135deg, #1c38a8, #f8cdda); /* Gradient background */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+        }
+        .container {
+            background: rgba(33, 28, 28, 0.7); /* Semi-transparent background for content */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+            max-width: 400px;
+            width: 100%;
+        }
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        p {
+            font-size: 1.1rem;
+            margin: 10px 0;
+        }
+        input, button { 
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            margin-top: 10px;
+            font-size: 1rem;
+        }
+        input {
+            width: calc(100% - 24px);
+            background: #c1a7a7;
+            color: #353434;
+        }
+        button {
+            background: #9a5650;
+            color: #fff;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        button:hover {
+            background: #ff4c4c;
+        }
+        #result {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Guess the Number</h1>
+        <p>Hello, I'm Lubna Shaikh. I created this basic "Guess the Number" </p> In this game, a random number between 1 and 100 is generated, and your task is to guess it. You will receive feedback whether your guess is too high, too low, or correct. Keep guessing until you find the right number!</p>
+        <p>Guess a number between 1 and 100:</p>
+        <input type="number" id="guess" placeholder="Enter your guess">
+        <button onclick="submitGuess()">Submit</button>
+        <p id="result"></p>
+    </div>
+
+    <script>
+        const target = Math.floor(Math.random() * 100) + 1;
+
+        function submitGuess() {
+            const userGuess = parseInt(document.getElementById('guess').value);
+            const result = document.getElementById('result');
+
+            if (userGuess === target) {
+                result.textContent = 'Success: Correct Guess!!';
+                result.style.color = '#28a745'; // Green for success
+            } else if (userGuess < target) {
+                result.textContent = 'Your number was too small. Take a bigger guess.';
+                result.style.color = '#ffc107'; // Yellow for hint
+            } else {
+                result.textContent = 'Your number was too big. Take a smaller guess.';
+                result.style.color = '#dc3545'; // Red for hint
+            }
+        }
+    </script>
+</body>
+</html>
